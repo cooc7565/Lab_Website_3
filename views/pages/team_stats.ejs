@@ -1,0 +1,189 @@
+<% include ../partials/header %>
+<% include ../partials/menu %>
+	<div class="container">
+		<br>
+		<div class="jumbotron">
+		  <h1 class="display-4">Fall 2018 Stats</h1>
+		  <p class="lead">Detailed information on how the Buffs are doing in the 2018 Football Season!</p>
+		</div>
+		
+		<table class="table table-bordered" id="stats_table">
+			<tr>
+				<th class="align-bottom" rowspan="2">Game Date</th>
+				<th class="align-bottom"rowspan="2">Opposing Team Name</th>
+				<th class="text-center" colspan="2">Score</th>
+				<th class="align-bottom" rowspan="2">Winner</th>
+			</tr>
+			<tr>
+				<th>Home Score</th>
+				<th>Opp. Score</th>
+			</tr>
+			<!-- TODO: Iterate over the Football_table data here 
+						1. Display the information for each row (date, name, home score, visitor score)
+						2. Determine who the winner is and display it in the final column
+
+						If you're not sure how the logic should work here, review the code you add to the client-side javascript
+						that ran onload for Lab 5.  We are doing the same kind of operations we had in Lab 5, but we are instead having
+						everything handled via server-side scriptes
+			-->
+			<tr>
+			<td><%- game_date_result %></td>
+			<td><%- visitor_name_result %></td>
+			<td><%- home_score_result %></td>
+			<td><%- visitor_score_result %></td>
+			<td><% if(visitor_score_result < home_score_result){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result %></p>
+				<% } %>
+			</td>
+			</tr>
+			<tr>
+			<td><%- game_date_result1 %></td>
+			<td><%- visitor_name_result1 %></td>
+			<td><%- home_score_result1 %></td>
+			<td><%- visitor_score_result1 %></td>
+			<td><% if(visitor_score_result1 < home_score_result1){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result1 %></p>
+				<% } %>
+			</td>
+			<tr>
+			<td><%- game_date_result2 %></td>
+			<td><%- visitor_name_result2 %></td>
+			<td><%- home_score_result2 %></td>
+			<td><%- visitor_score_result2 %></td>
+			<td><% if(visitor_score_result2 < home_score_result2){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result2 %></p>
+				<% } %>
+			</td>
+			</tr>
+			<tr>
+			<td><%- game_date_result3 %></td>
+			<td><%- visitor_name_result3 %></td>
+			<td><%- home_score_result3 %></td>
+			<td><%- visitor_score_result3 %></td>
+			<td><% if(visitor_score_result3 < home_score_result3){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result3 %></p>
+				<% } %>
+			</td>
+			</tr>
+			<tr>
+			<td><%- game_date_result4 %></td>
+			<td><%- visitor_name_result4 %></td>
+			<td><%- home_score_result4 %></td>
+			<td><%- visitor_score_result4 %></td>
+			<td><% if(visitor_score_result4 < home_score_result4){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result4 %></p>
+				<% } %>
+			</td>
+			</tr>
+			<tr>
+			<td><%- game_date_result5 %></td>
+			<td><%- visitor_name_result5 %></td>
+			<td><%- home_score_result5 %></td>
+			<td><%- visitor_score_result5 %></td>
+			<td><% if(visitor_score_result5 < home_score_result5){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result5 %></p>
+				<% } %>
+			</td>
+			</tr>
+			<tr>
+			<td><%- game_date_result6 %></td>
+			<td><%- visitor_name_result6 %></td>
+			<td><%- home_score_result6 %></td>
+			<td><%- visitor_score_result6 %></td>
+			<td><% if(visitor_score_result6 < home_score_result6){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result6 %></p>
+				<% } %>
+			</td>
+			</tr>
+			<tr>
+			<td><%- game_date_result7 %></td>
+			<td><%- visitor_name_result7 %></td>
+			<td><%- home_score_result7 %></td>
+			<td><%- visitor_score_result7 %></td>
+			<td><% if(visitor_score_result7 < home_score_result7){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result7 %></p>
+				<% } %>
+			</td>
+			</tr>
+			<tr>
+			<td><%- game_date_result8 %></td>
+			<td><%- visitor_name_result8 %></td>
+			<td><%- home_score_result8 %></td>
+			<td><%- visitor_score_result8 %></td>
+			<td><% if(visitor_score_result8 < home_score_result8){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result8 %></p>
+				<% } %>
+			</td>
+			</tr>
+			<tr>
+			<td><%- game_date_result9 %></td>
+			<td><%- visitor_name_result9 %></td>
+			<td><%- home_score_result9 %></td>
+			<td><%- visitor_score_result9 %></td>
+			<td><% if(visitor_score_result9 < home_score_result9){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result9 %></p>
+				<% } %>
+			</td>
+			</tr>	
+			<tr>
+			<td><%- game_date_result10 %></td>
+			<td><%- visitor_name_result10 %></td>
+			<td><%- home_score_result10 %></td>
+			<td><%- visitor_score_result10 %></td>
+			<td><% if(visitor_score_result10 < home_score_result10){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result10 %></p>
+				<% } %>
+			</td>
+			</tr>
+						<tr>
+			<td><%- game_date_result11 %></td>
+			<td><%- visitor_name_result11 %></td>
+			<td><%- home_score_result11 %></td>
+			<td><%- visitor_score_result11 %></td>
+			<td><% if(visitor_score_result11 < home_score_result11){ %>
+   					<p>CU Boulder</p>
+ 				<% } else{ %>  
+   					<p><%- visitor_name_result11 %></p>
+				<% } %>
+			</td>
+			</tr>		
+		</table>
+		<br>
+		<table class="table text-center">
+			<tr>
+				<th>Wins</th>
+				<th>Losses</th>
+			</tr>
+			<tr>
+				<td> 
+				<p><%- win_result[0].count %></p>
+				</td>
+				<td> <p><%- loss_result[0].count %></p>
+				</td>
+			</tr>
+		</table>
+		
+	</div>
+<% include ../partials/footer %>
