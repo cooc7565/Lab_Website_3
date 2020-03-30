@@ -6,19 +6,32 @@
 			<div class="col-4">
 				<div class="card">
 				<!-- TODO: Modify the ejs code below, to conditionally set the image_src to be from our chosen player -->
-				  <% 
-				  var image_src = '../resources/img/helmet.jpg';
-				  
-				  %>
+
+
+          <% if(drop_choice_return){
+            var image_src = drop_choice_return[0].img_src;
+          }else{
+            var image_src = '../resources/img/helmet.jpg';
+          } %>
+
+
 				 <img class="card-img-top" id="player_img" src= "<%- image_src %>" alt="Image of Football Player">
 				  <div class="card-body mx-auto">
-					<form class="form"action="/player_info/post" method="get">
+					<form class="form"action="/player_info/select_player" method="get">
 						<select class="custom-select" name="player_choice" onchange="this.form.submit()">
 							 <option selected>Select Player</option>
-							 //player += '<option value='
 							 <!-- TODO: Populate our select with player options
 							 			For each player, set a new option with a value matching the palyer's id, 
 							 			but will display the player's name-->
+
+						<% if(player_info_return){
+							var player = '';
+							player_info_return.forEach(choice => {
+								player += '<option value="' + choice.id + '">' + choice.name + '</option>\n';
+							})
+
+						}%>
+						<%- player %>
 						</select>
 					</form>
 				  </div>
@@ -27,29 +40,49 @@
 			<div class="col-8">
 				<div class="table-responsive">
 					<table class="table">
+
+
+					<%
+            if(drop_choice_return && number_of_games_return) {
+            	drop_choice_return = drop_choice_return[0];
+              	number_of_games_return = number_of_games_return[0].count;
+console.log(drop_choice_return, number_of_games_return);
+
+              	var year = '' + drop_choice_return.year;
+              	var major = '' + drop_choice_return.major;
+             	var games = '' + number_of_games_return;
+              
+             	var passing = '' + drop_choice_return.passing_yards;
+              	var avg_passing = '' + drop_choice_return.passing_yards / games;
+              	var rushing = '' + drop_choice_return.rushing_yards;
+              	var avg_rushing = '' + drop_choice_return.rushing_yards / games;
+              	var receiving = '' + drop_choice_return.receiving_yards;
+              	var avg_receiving = '' + drop_choice_return.receiving_yards / games;
+            }
+            %>
 						<tr>
 							<th>Year</th>
-							<% console.log(player_return); %>
+							<td><%- year %></td>
 						</tr>
 						<tr>
 							<th>Major</th>
-							<td>	</td>
+							<td><%- major %></td>
 						</tr>
 						<tr>
 							<th>Games Played</th>
-							<td>	</td>
+							<td><%- games %></td>
 						</tr>
 						<tr>
-							<td>Passing Yards: </td>
-							<td>Avg. Passing Yards: </td>
+							<td>Passing Yards: <%- passing %></td>
+							<td>Avg. Passing Yards: <%- avg_passing %></td>
 						</tr>
 						<tr>
-							<td>Rushing Yards: </td>
-							<td>Avg. Rushing Yards: </td>
+							<td>Rushing Yards: <%- rushing %></td>
+							<td>Avg. Rushing Yards: <%- avg_rushing %></td>
 						</tr>
 						<tr>
-							<td>Receiving Yards: </td>
-							<td>Avg. Receiving Yards: </td>
+							<td>Receiving Yards: <%- receiving %></td>
+							<td>Avg. Receiving Yards: <%- avg_receiving %></td>
 						</tr>
 					</table>
 				</div>

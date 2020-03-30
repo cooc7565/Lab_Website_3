@@ -263,14 +263,14 @@ app.get('/team_stats', function(req, res) {
 
 
 app.get('/player_info', function(req, res) {
-var players = 'SELECT * FROM football_players;';
-db.any(players)
+let player_info = 'SELECT id, name FROM football_players;';
+db.any(player_info)
     .then(function (rows) {
         res.render('pages/player_info',{
       my_title: "Players",
-      player_return: rows,
-      player_id_return: '',
-      player_name_return:''
+      player_info_return: rows,
+      drop_choice_return: '',
+      number_of_games_return:''
 
     })
 
@@ -280,30 +280,31 @@ db.any(players)
         console.log('error', err);
         res.render('pages/player_info',{
       my_title: "Players",
-      player_return: '',
-      player_id_return: '',
-      player_name_return:''
+      player_info_return: '',
+      drop_choice_return: '',
+      number_of_games_return:''
     })
   })
 });
 app.get('/player_info/select_player', function(req, res) {
-  var player_id = req.players.player_id;
-  var player_info =  'select * from football_player;';
-  var number_of_games = "select count(*) from football_games where players = '" + player_id + "';";
-  console.log(player_info)
+  let player_select = req.query.player_choice;
+
+  let players = 'SELECT id, name FROM football_players;';
+  let drop_choice =  "SELECT * FROM football_players WHERE id='" + player_select + "';";
+  var number_of_games = "select count(*) from football_games WHERE (SELECT id FROM football_players WHERE id='" + player_select + "') = ANY(players);";
   db.task('get-everything', task => {
         return task.batch([
-            task.any(player_info),
+            task.any(players),
+            task.any(drop_choice),
             task.any(number_of_games)
         ]);
     })
-    .then(info => { 
-      console.log(info);
+    .then(rows => { 
       res.render('pages/player_info',{
         my_title: "Select Player",
-        data: row[0],
-        player_info_return: info[0],
-        number_of_games_return: info[1][0]
+        player_info_return: rows[0],
+        drop_choice_return: rows[1],
+        number_of_games_return: rows[2]
 
       })
     })
@@ -312,8 +313,8 @@ app.get('/player_info/select_player', function(req, res) {
             console.log('error', err);
             response.render('pages/player_info', {
                 title: 'Select Player',
-                data: '',
                 player_info_return: '',
+                drop_choice_return: '',
                 number_of_games_return: ''
             })
     });
